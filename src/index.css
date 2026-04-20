@@ -297,8 +297,22 @@ html.lenis {
   opacity: 1;
 }
 #menu, #dishes, #reviews {
-  background: #0D0D0D !important;
+  background: #0A0A0A !important;
   background-image: none !important;
+}
+
+#menu > *, #dishes > *, #reviews > * {
+  background-image: none !important;
+}
+
+/* All floating elements need GPU compositing */
+.hero-logo-img,
+.featured-dish-image,
+.contact-form-card,
+.review-card {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 footer {

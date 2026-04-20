@@ -256,6 +256,21 @@ const scrollToSection = (id) => {
   }
 };
 
+// Utility function for every float animation
+const startFloat = (selector, amplitude, duration, delay) => {
+  gsap.utils.toArray(selector).forEach((el, i) => {
+    gsap.to(el, {
+      y: -amplitude,
+      duration: duration + (i * 0.4),
+      ease: 'sine.inOut',
+      yoyo: true,
+      repeat: -1,
+      delay: delay + (i * 0.25),
+      overwrite: 'auto',  // prevents conflicts with entrance animations
+    });
+  });
+};
+
 const Navbar = () => {
   const navRef = useRef(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -350,7 +365,11 @@ const Hero = () => {
         stagger: 0.15,
         ease: 'power3.out',
         duration: 1.2,
-        delay: 0.3
+        delay: 0.3,
+        onComplete: () => {
+          // A. Hero logo float - starts after hero entrance completes
+          startFloat('.hero-logo-img', 5, 3.5, 0);
+        }
       });
       gsap.from('.hero-line', {
         scaleY: 0,
@@ -365,16 +384,6 @@ const Hero = () => {
         yoyo: true,
         ease: 'power1.inOut',
         duration: 1.5
-      });
-
-      // A. Hero logo float
-      gsap.to('.hero-logo-img', {
-        y: -5,
-        duration: 3.5,
-        ease: "sine.inOut",
-        yoyo: true,
-        repeat: -1,
-        delay: 2.3 // (0.3 delay + 1.2 duration) + 0.8s extra
       });
     }, heroRef);
     return () => ctx.revert();
@@ -491,7 +500,7 @@ const Menu = () => {
   const filteredMenu = menuData.filter(item => item.category === activeTab);
 
   return (
-    <section id="menu" className="py-32 px-6 md:px-12 section-divider" style={{ backgroundColor: '#0D0D0D' }}>
+    <section id="menu" className="py-32 px-6 md:px-12 bg-[#0A0A0A] section-divider">
       <div className="max-w-6xl mx-auto">
         <SectionTitle title="Our Menu" />
         
@@ -560,29 +569,21 @@ const Gallery = () => {
         x: 50, opacity: 0, duration: 1, delay: 0.2, ease: 'power3.out', stagger: 0.2
       });
 
-      // B. Featured dish food images float
-      gsap.utils.toArray('.featured-dish-image').forEach((img, i) => {
-        gsap.to(img, {
-          y: -6,
-          duration: 4.0 + (i * 0.5),
-          ease: "sine.inOut",
-          yoyo: true,
-          repeat: -1,
-          delay: i * 0.3,
-          scrollTrigger: {
-            trigger: img,
-            start: "top 80%"
-          }
-        });
+      // B. Featured dish food images float - starts when section enters viewport
+      ScrollTrigger.create({
+        trigger: '#dishes',
+        start: 'top 70%',
+        once: true,
+        onEnter: () => startFloat('.featured-dish-image', 6, 4.0, 0.2),
       });
     }, galRef);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section id="dishes" ref={galRef} className="py-24 px-6 md:px-12" style={{ backgroundColor: '#0D0D0D' }}>
+    <section id="dishes" ref={galRef} className="py-24 px-6 md:px-12 bg-[#0A0A0A]">
       <div className="max-w-6xl mx-auto">
-        <SectionTitle title="Featured Dishes" underlineColor="text-[#9CAF88]" />
+        <SectionTitle title="Featured Dishes" underlineColor="text-[#C0392B]" />
         
         <div className="flex flex-col mt-12">
           {featuredData.map((item, i) => {
@@ -594,10 +595,10 @@ const Gallery = () => {
                   {/* Image Container */}
                   <div className={`w-full md:w-[45%] flex justify-center ${isReverse ? 'feature-right' : 'feature-left'}`}>
                     <div 
-                      className="relative w-full max-w-[420px] h-[500px] overflow-hidden border border-[#9CAF88]/20"
+                      className="relative w-full max-w-[420px] h-[500px] overflow-hidden border border-[#C0392B]/20"
                       style={{ 
                          borderRadius: '160px 160px 20px 20px',
-                         boxShadow: '0 0 80px 20px rgba(11, 36, 20, 0.5)' 
+                         boxShadow: '0 0 80px 20px rgba(192, 57, 43, 0.5)' 
                       }}
                     >
                       <img 
@@ -612,7 +613,7 @@ const Gallery = () => {
 
                   {/* Text Container */}
                   <div className={`w-full md:w-[50%] flex flex-col items-center md:items-start text-center md:text-left justify-center ${isReverse ? 'feature-left' : 'feature-right'}`}>
-                    <span className="font-sans font-medium tracking-[0.2em] uppercase text-[#9CAF88] text-sm mb-4">{item.category}</span>
+                    <span className="font-sans font-medium tracking-[0.2em] uppercase text-[#C0392B] text-sm mb-4">{item.category}</span>
                     <h3 className="font-cormorant text-4xl md:text-5xl text-ivory italic mb-6 leading-tight">{item.name}</h3>
                     <p className="font-sans font-light text-ash leading-relaxed text-lg max-w-md md:max-w-none">
                       {item.desc}
@@ -623,7 +624,7 @@ const Gallery = () => {
                 
                 {/* Separator */}
                 {i < featuredData.length - 1 && (
-                  <div className="w-[80%] mx-auto h-[1px] bg-gradient-to-r from-transparent via-[#9CAF88]/30 to-transparent my-10"></div>
+                  <div className="w-[80%] mx-auto h-[1px] bg-gradient-to-r from-transparent via-[#C0392B]/30 to-transparent my-10"></div>
                 )}
               </React.Fragment>
             );
@@ -798,17 +799,8 @@ const GuestExperience = () => {
             stagger: 0.12,
             ease: "power3.out",
             onComplete: () => {
-              // Float ONLY starts after all entrances are complete
-              allCards.forEach((card, i) => {
-                gsap.to(card, {
-                  y: -7,
-                  duration: 2.8 + (i * 0.35),
-                  ease: "sine.inOut",
-                  yoyo: true,
-                  repeat: -1,
-                  delay: i * 0.2
-                });
-              });
+              // Review cards float - starts when section enters viewport
+              startFloat('.review-card', 7, 2.8, 0);
             }
           });
 
@@ -830,7 +822,7 @@ const GuestExperience = () => {
   }, []);
 
   return (
-    <section id="reviews" ref={compRef} className="py-32 overflow-hidden relative guest-experience-sec" style={{ backgroundColor: '#0D0D0D' }}>
+    <section id="reviews" ref={compRef} className="py-32 bg-[#0A0A0A] overflow-hidden relative guest-experience-sec">
       {/* Background radial gradient glow removed */}
       <div className="absolute inset-0 pointer-events-none z-0"></div>
       
@@ -951,13 +943,7 @@ const Contact = () => {
 
       // Floating animation starts AFTER entrance completes
       contactTl.call(() => {
-        gsap.to('.contact-form-card', {
-          y: -5,
-          duration: 3.8,
-          ease: 'sine.inOut',
-          yoyo: true,
-          repeat: -1,
-        });
+        startFloat('.contact-form-card', 5, 3.8, 0.5);
       });
     }, contactRef);
     return () => ctx.revert();
