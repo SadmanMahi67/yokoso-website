@@ -340,10 +340,18 @@ const Navbar = () => {
       </div>
 
       {mobileOpen && (
-        <div className="fixed inset-0 z-[110] bg-[#0D0A12] w-full h-full flex flex-col items-center justify-center p-6 space-y-10 text-ivory">
-          <div className="absolute top-6 right-6"></div>
+        <div className="fixed inset-0 z-[110] bg-[#0D0A12] w-full h-full flex flex-col items-center justify-center p-6 space-y-10 text-ivory overflow-y-auto">
           {navLinks.map(link => (
-            <button key={link.id} onClick={() => { scrollToSection(link.id); setMobileOpen(false); }} className="text-4xl font-cormorant italic">
+            <button 
+              key={link.id} 
+              onClick={() => { 
+                setMobileOpen(false); 
+                setTimeout(() => {
+                  scrollToSection(link.id);
+                }, 300);
+              }} 
+              className="text-4xl font-cormorant italic"
+            >
               {link.label}
             </button>
           ))}
@@ -1174,6 +1182,7 @@ function App() {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // expo ease
       orientation: 'vertical',
       smoothWheel: true,
+      smoothTouch: false,      // IMPORTANT: disable on touch devices for native momentum
       wheelMultiplier: 0.9,    // slightly slower than default = more control
       touchMultiplier: 1.5,    // mobile feel
     });
@@ -1215,7 +1224,10 @@ function App() {
       return closest;
     };
 
+    const isMobile = () => window.innerWidth < 768;
+
     const handleScroll = () => {
+      if (isMobile()) return; // SKIP SNAP ON MOBILE
       if (isSnapping) return;
 
       const now = Date.now();

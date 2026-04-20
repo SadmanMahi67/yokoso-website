@@ -13,14 +13,15 @@
   }
 }
 
-html, body {
-  overflow: hidden; /* Lenis manages its own overflow */
-}
+/* html, body overflow handled by Lenis config below */
 
 /* Lenis root */
-html.lenis {
+html.lenis,
+html.lenis body {
   height: auto;
+  overflow: auto; /* let Lenis manage scroll naturally */
 }
+
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
@@ -454,4 +455,44 @@ footer::before {
 footer > * {
   position: relative;
   z-index: 1;
+}
+
+/* MOBILE FIXES */
+canvas.sakura-canvas,
+canvas[class*="petal"],
+canvas[class*="sakura"],
+canvas {
+  pointer-events: none !important;
+  touch-action: none !important;
+}
+
+@media (max-width: 768px) {
+  /* Prevent horizontal overflow */
+  body, #root {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  /* Ensure sections are full width */
+  section, #hero, #menu, #dishes, #about, #reviews, #contact {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* Fix any elements that might be wider than viewport */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 100%;
+  }
+  
+  /* Reduce backdrop-filter on mobile for performance */
+  .review-card,
+  .menu-card,
+  .contact-form-card,
+  .nav-scrolled {
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+  }
 }
