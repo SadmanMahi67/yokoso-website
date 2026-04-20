@@ -664,7 +664,7 @@ const About = () => {
     <section 
       id="about" 
       ref={aboutRef} 
-      className="relative py-40 border-y border-[#0B2414] overflow-hidden"
+      className="relative py-40 border-y border-[#C0392B]/30 overflow-hidden"
     >
       
       {/* Full Bleed Background */}
@@ -706,7 +706,7 @@ const About = () => {
            href="https://share.google/P5XQidfZ3sap3kc1k" 
            target="_blank" 
            rel="noreferrer"
-           className="inline-block border border-ivory/50 text-ivory bg-transparent hover:bg-[#0B2414] hover:border-[#0B2414] px-10 py-3.5 rounded-full font-sans tracking-wide transition-all duration-300"
+           className="inline-block border border-ivory/50 text-ivory bg-transparent hover:bg-[#C0392B]/10 hover:border-[#C0392B]/30 px-10 py-3.5 rounded-full font-sans tracking-wide transition-all duration-300"
          >
            Get Directions
          </a>
@@ -946,7 +946,7 @@ const Contact = () => {
   }, []);
 
   return (
-    <section id="contact" ref={contactRef} className="relative py-32 overflow-hidden border-t border-[#9CAF88]/10" style={{ backgroundColor: '#000' }}>
+    <section id="contact" ref={contactRef} className="relative py-32 overflow-hidden border-t border-[#C0392B]/20" style={{ backgroundColor: '#000' }}>
       
       {/* Atmosphere Background */}
       <div className="absolute inset-0 z-0">
@@ -958,7 +958,7 @@ const Contact = () => {
           className="w-full h-full object-cover object-center opacity-30"
           style={{ filter: 'grayscale(100%)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#051108]/90 via-black/80 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1A0A0A]/90 via-black/80 to-transparent"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
       </div>
 
@@ -975,7 +975,7 @@ const Contact = () => {
 
       <div className="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
         <div className="contact-title">
-          <SectionTitle title="Begin the Ceremony" underlineColor="text-[#9CAF88]" />
+          <SectionTitle title="Begin the Ceremony" underlineColor="text-[#C0392B]" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-12 mt-16 items-center">
@@ -986,7 +986,7 @@ const Contact = () => {
             {/* Opening Hours */}
             <div>
               <div className="flex items-center gap-4 mb-4">
-                 <svg className="w-6 h-6 text-[#9CAF88]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                 <svg className="w-6 h-6 text-[#C0392B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
                    <circle cx="12" cy="12" r="10" />
                    <path d="M12 6v6l4 2" />
                  </svg>
@@ -1000,7 +1000,7 @@ const Contact = () => {
             {/* Visit */}
             <div>
               <div className="flex items-center gap-4 mb-4">
-                 <MapPin className="w-6 h-6 text-[#9CAF88]" strokeWidth={1} />
+                 <MapPin className="w-6 h-6 text-[#C0392B]" strokeWidth={1} />
                  <h3 className="font-cormorant text-2xl md:text-3xl text-ivory italic">Location</h3>
               </div>
               <div className="font-sans font-light text-ash tracking-wide space-y-1 ml-10">
@@ -1013,7 +1013,7 @@ const Contact = () => {
             {/* Contact */}
             <div>
               <div className="flex items-center gap-4 mb-4">
-                 <Phone className="w-6 h-6 text-[#9CAF88]" strokeWidth={1} />
+                 <Phone className="w-6 h-6 text-[#C0392B]" strokeWidth={1} />
                  <h3 className="font-cormorant text-2xl md:text-3xl text-ivory italic">Reservations</h3>
               </div>
               <div className="font-sans font-light text-ash tracking-wide space-y-1 ml-10">
@@ -1029,7 +1029,7 @@ const Contact = () => {
           <div className="md:hidden w-full h-[1px] bg-ivory/10 my-4"></div>
 
           {/* Right Column (The Form in Glassmorphism Container) */}
-          <div className="contact-form-card flex flex-col w-full max-w-md mx-auto md:mx-0 p-8 md:p-12 bg-[rgba(0,0,0,0.6)] backdrop-blur-[12px] border border-[#9CAF88]/10 rounded-[2rem]">
+          <div className="contact-form-card flex flex-col w-full max-w-md mx-auto md:mx-0 p-8 md:p-12 bg-[rgba(0,0,0,0.6)] backdrop-blur-[12px] border border-[#C0392B]/10 rounded-[2rem]">
              <h3 className="font-cormorant text-3xl text-ivory italic mb-8">Send an Inquiry</h3>
              <form action="mailto:yokoso.syl@gmail.com" method="post" encType="text/plain" className="w-full space-y-10 font-sans text-sm">
                
