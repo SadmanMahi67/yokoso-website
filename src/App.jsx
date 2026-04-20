@@ -537,15 +537,15 @@ const Menu = () => {
           {filteredMenu.map((item, i) => (
             <div 
               key={`${item.name}-${i}`} 
-              className="group relative bg-void border border-torii/20 rounded-[1.5rem] p-7 transition-colors hover:border-torii/50 hover:shadow-[0_4px_20px_rgba(192,57,43,0.1)] flex items-start gap-4 overflow-hidden"
+              className="group relative menu-card p-7 transition-colors flex items-start gap-4 overflow-hidden"
             >
               {/* Vertical red border reveal */}
               <div className="absolute left-0 top-0 w-1 bg-torii h-1 group-hover:h-full transition-all duration-500 ease-out z-10 opacity-0 group-hover:opacity-100"></div>
               
               <FlowerIcon />
               <div>
-                <h3 className="font-playfair text-[1.2rem] text-ivory mb-2">{item.name}</h3>
-                <p className="font-sans font-light text-[0.9rem] text-ash leading-relaxed">{item.desc}</p>
+                <h3 className="font-playfair item-name text-[1.2rem] text-ivory mb-2">{item.name}</h3>
+                <p className="font-sans item-desc font-light text-[0.9rem] text-ash leading-relaxed">{item.desc}</p>
               </div>
             </div>
           ))}

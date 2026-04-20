@@ -305,6 +305,57 @@ html.lenis {
   background-image: none !important;
 }
 
+.menu-card,
+[class*="menu-item"],
+#menu .rounded {
+  /* Remove solid background */
+  background: rgba(255, 255, 255, 0.04) !important;
+  
+  /* Frosted glass */
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  
+  /* Subtle glass edge */
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  
+  /* Shadow with faint red bottom accent */
+  box-shadow: 
+    inset 0 -1px 0 rgba(192, 57, 43, 0.12),
+    0 8px 32px rgba(0, 0, 0, 0.35) !important;
+  
+  border-radius: 1.5rem !important;
+}
+
+/* Hover — glass brightens */
+.menu-card:hover,
+#menu .rounded:hover {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid rgba(192, 57, 43, 0.22) !important;
+  box-shadow:
+    inset 0 -1px 0 rgba(192, 57, 43, 0.18),
+    0 16px 48px rgba(0, 0, 0, 0.45) !important;
+  transform: translateY(-4px);
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* The red left-border reveal on hover */
+.menu-card::before,
+#menu .rounded::before {
+  background: #C0392B !important;
+}
+
+/* Item name */
+.menu-card h3,
+.menu-card .item-name {
+  color: #F5F0EC !important;
+}
+
+/* Description */
+.menu-card p,
+.menu-card .item-desc {
+  color: rgba(138, 127, 127, 0.9) !important;
+}
+
 /* Fix 1: Subtler Dish Glow */
 .featured-dish-image-container {
   box-shadow: 0 0 40px rgba(192, 57, 43, 0.08) !important;
