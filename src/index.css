@@ -296,3 +296,29 @@ html.lenis {
 .nav-scrolled.nav-scrolled::after {
   opacity: 1;
 }
+#menu, #dishes, #reviews {
+  background: #0D0D0D !important;
+  background-image: none !important;
+}
+
+footer {
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/interior/475778909_599017436248167_6890027126558187800_n.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px) brightness(0.25);
+  transform: scale(1.05);
+  z-index: 0;
+}
+
+footer > * {
+  position: relative;
+  z-index: 1;
+}

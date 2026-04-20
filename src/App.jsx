@@ -491,7 +491,7 @@ const Menu = () => {
   const filteredMenu = menuData.filter(item => item.category === activeTab);
 
   return (
-    <section id="menu" className="py-32 px-6 md:px-12 bg-ember section-divider">
+    <section id="menu" className="py-32 px-6 md:px-12 section-divider" style={{ backgroundColor: '#0D0D0D' }}>
       <div className="max-w-6xl mx-auto">
         <SectionTitle title="Our Menu" />
         
@@ -580,7 +580,7 @@ const Gallery = () => {
   }, []);
 
   return (
-    <section id="dishes" ref={galRef} className="py-24 px-6 md:px-12" style={{ background: 'linear-gradient(to bottom, #000000, #051108, #000000)' }}>
+    <section id="dishes" ref={galRef} className="py-24 px-6 md:px-12" style={{ backgroundColor: '#0D0D0D' }}>
       <div className="max-w-6xl mx-auto">
         <SectionTitle title="Featured Dishes" underlineColor="text-[#9CAF88]" />
         
@@ -830,9 +830,9 @@ const GuestExperience = () => {
   }, []);
 
   return (
-    <section id="reviews" ref={compRef} className="py-32 bg-[#16131F] overflow-hidden relative guest-experience-sec">
-      {/* Background radial gradient glow */}
-      <div className="absolute inset-0 pointer-events-none z-0" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(192,57,43,0.05) 0%, transparent 70%)' }}></div>
+    <section id="reviews" ref={compRef} className="py-32 overflow-hidden relative guest-experience-sec" style={{ backgroundColor: '#0D0D0D' }}>
+      {/* Background radial gradient glow removed */}
+      <div className="absolute inset-0 pointer-events-none z-0"></div>
       
       <div className="max-w-6xl mx-auto px-6 mb-20 relative z-10 flex flex-col items-center text-center">
         {/* Brush stroke instead of TESTIMONIALS */}
@@ -1101,9 +1101,9 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer ref={footerRef} className="bg-[#0D0D0D] border-t-2 border-torii rounded-t-[2.5rem] pt-24 pb-12 relative z-30 overflow-hidden">
-      {/* Radial Background Glow */}
-      <div className="absolute inset-x-0 top-0 h-[300px] pointer-events-none z-0" style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 0%, rgba(192,57,43,0.06) 0%, transparent 70%)' }}></div>
+    <footer ref={footerRef} className="border-t-2 border-torii rounded-t-[2.5rem] pt-24 pb-12 relative z-30 overflow-hidden">
+      {/* Radial Background Glow removed */}
+      <div className="absolute inset-x-0 top-0 h-[300px] pointer-events-none z-0"></div>
       
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
