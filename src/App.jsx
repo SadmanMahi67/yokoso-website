@@ -857,14 +857,10 @@ const GuestExperience = () => {
             return (
               <div 
                 key={idx}
-                className={`w-full group review-card ${isMiddleCol ? 'lg:mt-[40px]' : ''} ${isFeatured ? 'md:col-span-2 featured-card' : 'lg:col-span-1'}`}
+                className={`w-full group review-card-container ${isMiddleCol ? 'lg:mt-[40px]' : ''} ${isFeatured ? 'md:col-span-2 featured-card' : 'lg:col-span-1'}`}
               >
-                <div className="relative review-card-glass p-8 overflow-hidden transition-all duration-[400ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:-translate-y-[6px]">
+                <div className="relative review-card p-8 overflow-hidden transition-all duration-[400ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:-translate-y-[6px]">
                   
-                  {isFeatured && (
-                    <div className="absolute left-0 top-0 w-[4px] bg-[#C0392B] featured-border" style={{ height: 0 }}></div>
-                  )}
-
                   {/* Giant Decorative Quote */}
                   <div className="absolute top-4 left-6 font-cormorant italic quote-mark text-[5rem] opacity-[0.35] leading-none select-none pointer-events-none transition-opacity duration-[400ms] group-hover:opacity-60">"</div>
 
