@@ -305,6 +305,46 @@ html.lenis {
   background-image: none !important;
 }
 
+/* Fix 1: Subtler Dish Glow */
+.featured-dish-image-container {
+  box-shadow: 0 0 40px rgba(192, 57, 43, 0.08) !important;
+}
+
+/* Fix 2: Review Cards Glassmorphism */
+.review-card-glass {
+  background: rgba(255, 255, 255, 0.04) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  box-shadow: 
+    inset 0 -1px 0 rgba(192, 57, 43, 0.15),
+    0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  border-radius: 1.5rem;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.review-card-glass:hover {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid rgba(192, 57, 43, 0.25) !important;
+  box-shadow: 
+    inset 0 -1px 0 rgba(192, 57, 43, 0.2),
+    0 20px 60px rgba(0, 0, 0, 0.5) !important;
+}
+
+.review-card-glass .quote-mark {
+  color: rgba(192, 57, 43, 0.25) !important;
+}
+
+.review-card-glass .reviewer-name {
+  color: rgba(240, 240, 240, 0.5) !important;
+}
+
+.review-card-glass .review-text {
+  color: #F5F0EC !important;
+}
+
 /* All floating elements need GPU compositing */
 .hero-logo-img,
 .featured-dish-image,

@@ -595,10 +595,10 @@ const Gallery = () => {
                   {/* Image Container */}
                   <div className={`w-full md:w-[45%] flex justify-center ${isReverse ? 'feature-right' : 'feature-left'}`}>
                     <div 
-                      className="relative w-full max-w-[420px] h-[500px] overflow-hidden border border-[#C0392B]/20"
+                      className="relative w-full max-w-[420px] h-[500px] overflow-hidden border border-[#C0392B]/20 featured-dish-image-container"
                       style={{ 
                          borderRadius: '160px 160px 20px 20px',
-                         boxShadow: '0 0 80px 20px rgba(192, 57, 43, 0.5)' 
+                         boxShadow: '0 0 40px rgba(192, 57, 43, 0.08)' 
                       }}
                     >
                       <img 
@@ -859,14 +859,14 @@ const GuestExperience = () => {
                 key={idx}
                 className={`w-full group review-card ${isMiddleCol ? 'lg:mt-[40px]' : ''} ${isFeatured ? 'md:col-span-2 featured-card' : 'lg:col-span-1'}`}
               >
-                <div className="relative bg-[#1E0A0A] border border-[rgba(192,57,43,0.2)] rounded-[1.5rem] p-8 overflow-hidden transition-all duration-[400ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:-translate-y-[6px] group-hover:border-[rgba(192,57,43,0.6)] group-hover:shadow-[0_20px_60px_rgba(192,57,43,0.12)]">
+                <div className="relative review-card-glass p-8 overflow-hidden transition-all duration-[400ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:-translate-y-[6px]">
                   
                   {isFeatured && (
                     <div className="absolute left-0 top-0 w-[4px] bg-[#C0392B] featured-border" style={{ height: 0 }}></div>
                   )}
 
                   {/* Giant Decorative Quote */}
-                  <div className="absolute top-4 left-6 font-cormorant italic text-[#C0392B] text-[5rem] opacity-[0.35] leading-none select-none pointer-events-none transition-opacity duration-[400ms] group-hover:opacity-60">"</div>
+                  <div className="absolute top-4 left-6 font-cormorant italic quote-mark text-[5rem] opacity-[0.35] leading-none select-none pointer-events-none transition-opacity duration-[400ms] group-hover:opacity-60">"</div>
 
                   {/* Stars */}
                   <div className="flex text-[#C0392B] mb-6 text-lg relative z-10 gap-[2px]">
@@ -876,14 +876,14 @@ const GuestExperience = () => {
                   </div>
 
                   {/* Review Text */}
-                  <p className="font-playfair italic text-[#F5F0EC] text-[1.05rem] leading-[1.75] mb-10 relative z-10 min-h-[4rem]">
+                  <p className="font-playfair italic text-[#F5F0EC] review-text text-[1.05rem] leading-[1.75] mb-10 relative z-10 min-h-[4rem]">
                     {review.text}
                   </p>
 
                   {/* Bottom Element: Divider + Name */}
                   <div className="mt-auto relative z-10 w-full flex flex-col items-start pt-2">
                     <div className="h-[1px] w-[60px] bg-gradient-to-r from-[#8B0000] to-transparent mb-3"></div>
-                    <div className="font-sans uppercase text-[#8A7F7F] text-xs tracking-[0.12em]">
+                    <div className="font-sans uppercase text-ash reviewer-name text-xs tracking-[0.12em]">
                       {review.name}
                     </div>
                   </div>
